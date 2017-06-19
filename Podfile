@@ -5,13 +5,21 @@ target 'hw_03' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for hw_03
-  pod 'BonMot'
+  # Networking
   pod 'Alamofire'
-  pod 'ObjectMapper'
   pod 'SwiftyJSON'
+
+  # Model
+  pod 'ObjectMapper'
+  
+  # View
+  pod 'BonMot'
   pod 'FontAwesome.swift'
   pod 'Kingfisher'
+
+  # Reactive
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
   target 'hw_03Tests' do
     inherit! :search_paths
