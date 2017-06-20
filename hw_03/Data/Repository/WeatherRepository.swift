@@ -10,16 +10,16 @@ import Foundation
 import RxSwift
 
 protocol WeatherRepository {
-    func getTodaysData(prefectureId: String) -> Observable<WeatherEntity>
+    func getWeatherData(prefectureId: String) -> Observable<WeatherEntity>
 }
 
 struct WeatherRepositoryImpl: WeatherRepository {
     //TODO: 考える. DataStoreだとFactoryいたけど...??
     static let shared = WeatherRepositoryImpl()
     
-    func getTodaysData(prefectureId: String) -> Observable<WeatherEntity> {
+    func getWeatherData(prefectureId: String) -> Observable<WeatherEntity> {
         let dataStore: WeatherDataStore = WeatherDataStoreFactory.createWeatherDataStore()
         
-        return dataStore.getTodaysData(prefectureId: prefectureId)
+        return dataStore.getWeatherData(prefectureId: prefectureId)
     }
 }

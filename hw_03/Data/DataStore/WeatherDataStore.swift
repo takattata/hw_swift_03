@@ -13,11 +13,11 @@ import RxSwift
 import SwiftyJSON
 
 protocol WeatherDataStore {
-    func getTodaysData(prefectureId: String) -> Observable<WeatherEntity>
+    func getWeatherData(prefectureId: String) -> Observable<WeatherEntity>
 }
 
 struct WeatherDataStoreImpl: WeatherDataStore {
-    func getTodaysData(prefectureId: String) -> Observable<WeatherEntity> {
+    func getWeatherData(prefectureId: String) -> Observable<WeatherEntity> {
         let url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=\(prefectureId)"
         
         return Observable.create( { (observer) -> Disposable in

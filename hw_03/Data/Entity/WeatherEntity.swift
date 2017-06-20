@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 
 struct ForecastEntity {
-    var url: String?
+    var imageUrl: String?
     var max: String?
     var min: String?
 }
@@ -20,7 +20,7 @@ extension ForecastEntity: Mappable {
     }
     
     mutating func mapping(map: Map) {
-        url <- map["image.url"]
+        imageUrl <- map["image.url"]
         max <- map["temperature.max.celsius"]
         min <- map["temperature.min.celsius"]
     }
