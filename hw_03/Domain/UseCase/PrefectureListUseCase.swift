@@ -9,11 +9,11 @@
 import Foundation
 import RxSwift
 
-protocol PrefectureUseCase {
+protocol PrefectureListUseCase {
     func getListData() -> Observable<PrefectureListModel>
 }
 
-struct PrefectureListUseCaseImpl: PrefectureUseCase {
+struct PrefectureListUseCaseImpl: PrefectureListUseCase {
     let prefectureListRepository: PrefectureListRepository
     
     func getListData() -> Observable<PrefectureListModel> {

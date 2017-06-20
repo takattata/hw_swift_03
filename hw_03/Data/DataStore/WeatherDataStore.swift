@@ -27,14 +27,14 @@ struct WeatherDataStoreImpl: WeatherDataStore {
                     let json = JSON(value).object
                     
                     guard let object = Mapper<WeatherEntity>().map(JSONObject: json) else {
-                        observer.onError(WeatherError.generic)
+                        observer.onError(WeatherAppError.generic)
                         return
                     }
                     
                     observer.onNext(object)
                     observer.onCompleted()
                 case .failure:
-                    observer.onError(WeatherError.network)
+                    observer.onError(WeatherAppError.network)
                 }
             }
 

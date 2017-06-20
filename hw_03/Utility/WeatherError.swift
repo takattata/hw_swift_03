@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum WeatherError: Error {
+enum WeatherAppError: Error {
     case generic
     case network
     
