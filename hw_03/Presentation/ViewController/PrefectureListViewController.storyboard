@@ -46,6 +46,9 @@
                                                 <constraint firstItem="cD0-vp-dVc" firstAttribute="top" secondItem="ue5-aa-VSj" secondAttribute="top" constant="12" id="xGY-5f-iPI"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="cD0-vp-dVc" id="DYv-IO-h11"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

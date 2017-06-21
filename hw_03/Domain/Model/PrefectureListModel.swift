@@ -9,5 +9,5 @@
 import Foundation
 
 struct PrefectureListModel {
-    let list: [(name: String, id: String)]
+    let list: [PrefectureModel] //FIXME: わざわざModelを作る必要あるのかなー. 
 }

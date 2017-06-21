@@ -10,10 +10,13 @@ import Foundation
 
 struct PrefectureListModelTranslator: Translator {
     func translate(_ entity: PrefectureListEntity) -> PrefectureListModel {
-        let list = entity.list
+        var prefectureModels: [PrefectureModel] = []
+        for pair in entity.list {
+            prefectureModels.append(PrefectureModel(name: pair.name, id: pair.id))
+        }
 
         return PrefectureListModel(
-            list: list
+            list: prefectureModels
         )
     }
 }

@@ -35,11 +35,18 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        presenter.setupUI()
+        presenter.refreshData()
     }
     
     func injection(presenter: WeatherPresenter, routing: WeatherRouting) {
         self.presenter = presenter
         self.routing = routing
+    }
+    
+    func refreshData() {
+        presenter.refreshData()
     }
 }
 
@@ -50,9 +57,9 @@ extension WeatherViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let index = indexPath.section
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellNames[index], for: indexPath)
+        let cell: WeatherCell = tableView.dequeueReusableCell(withIdentifier: CellNames[index], for: indexPath) as! WeatherCell
         cell.selectionStyle = .none
-//        cell.viewModel = weatherVM
+        cell.viewModel = weatherVM
         
         return cell
     }
@@ -73,4 +80,11 @@ extension WeatherViewController: UITableViewDelegate {
 }
 
 extension WeatherViewController: WeatherPresenterView {
+    func setupNavigation(title: String) {
+        self.navigationItem.title = title
+    }
+    
+    func loadWeatherVM(weatherVM: WeatherViewModel) {
+        self.weatherVM = weatherVM
+    }
 }

@@ -8,42 +8,26 @@
 
 import Foundation
 
-protocol PrefectureViewModelProtocol {
-//    func count() -> Int
-
-    func name() -> String
-    func id() -> String
+protocol PrefectureListViewModelProtocol {
+    func count() -> Int
     
-    //FIXME: indexをどう管理すれば良いのだろうか...
-//    var index: Int { get set }
-//    mutating  func setIndex(index: Int)
-    func prefectureViewModelProtocol(index: Int) -> PrefectureViewModelProtocol
+    func PrefectureViewModelProtocol(index: Int) -> PrefectureViewModelProtocol
 }
 
-struct PrefectureViewModel {
+struct PrefectureListViewModel {
     fileprivate let prefectureList: PrefectureListModel
-    
-//    var index: Int
     
     init(prefectureList: PrefectureListModel) {
         self.prefectureList = prefectureList
     }
 }
 
-extension PrefectureViewModel: PrefectureViewModelProtocol {
-//    func count() -> Int {
-//        return prefectureList.list.count
-//    }
-    
-    func name() -> String {
-        return prefectureList.list[0/*index*/].name
+extension PrefectureListViewModel: PrefectureListViewModelProtocol {
+    func count() -> Int {
+        return prefectureList.list.count
     }
     
-    func id() -> String {
-        return prefectureList.list[0/*index*/].id
-    }
-    
-    func prefectureViewModelProtocol(index: Int) -> PrefectureViewModelProtocol {
-        return PrefectureViewModel(prefectureList: prefectureList)
+    func PrefectureViewModelProtocol(index: Int) -> PrefectureViewModelProtocol {
+        return PrefectureViewModel(prefecture: prefectureList.list[index])
     }
 }

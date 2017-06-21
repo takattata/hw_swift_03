@@ -17,7 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
         
-        let vc = UIStoryboard(name: "PrefectureListViewController", bundle: nil).instantiateInitialViewController()!
+        //FIXME: Routingに逃がせないかな?
+        let vc: PrefectureListViewController = UIStoryboard(name: "PrefectureListViewController", bundle: nil).instantiateInitialViewController() as! PrefectureListViewController
+        let repository: PrefectureListRepository = PrefectureListRepositoryImpl()
+        let useCase: PrefectureListUseCase = PrefectureListUseCaseImpl(prefectureListRepository: repository)
+        let presenter: PrefectureListPresenter = PrefectureListPresenterImpl(useCase: useCase)
+        let routing: PrefectureListRouting = PrefectureListRoutingImpl()
+        
+        vc.injection(presenter: presenter, routing: routing)
         let navigation = UINavigationController(rootViewController: vc)
         navigation.navigationBar.barTintColor = UIColor.orange
         navigation.navigationBar.tintColor = UIColor.white

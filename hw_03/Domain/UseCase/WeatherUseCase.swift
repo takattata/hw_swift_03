@@ -16,10 +16,13 @@ protocol WeatherUseCase {
 struct WeatherUseCaseImpl: WeatherUseCase {
     let weatherRepository: WeatherRepository
 
+    init(weatherRepository: WeatherRepository) {
+        self.weatherRepository = weatherRepository
+    }
+    
     func getWeatherData(prefectureId: String) -> Observable<WeatherModel> {
         return weatherRepository.getWeatherData(prefectureId: prefectureId)
             .map { weatherEntity -> WeatherModel in
-//                self.weatherRepository.getWeatherData(prefectureId: prefectureId)
                 return WeatherModelTranslator().translate(weatherEntity)
             }
     }

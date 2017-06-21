@@ -16,6 +16,10 @@ protocol PrefectureListUseCase {
 struct PrefectureListUseCaseImpl: PrefectureListUseCase {
     let prefectureListRepository: PrefectureListRepository
     
+    init(prefectureListRepository: PrefectureListRepository) {
+        self.prefectureListRepository = prefectureListRepository
+    }
+    
     func getListData() -> Observable<PrefectureListModel> {
         return prefectureListRepository.getListData()
             .map { prefectureListEntity -> PrefectureListModel in

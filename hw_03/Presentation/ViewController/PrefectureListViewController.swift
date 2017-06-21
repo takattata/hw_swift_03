@@ -18,23 +18,35 @@ class PrefectureListViewController: UIViewController {
     }
     
     fileprivate var routing: PrefectureListRouting!
-    fileprivate var prefectureVM: PrefectureViewModelProtocol!
+    fileprivate var prefectureListVM: PrefectureListViewModel!
     fileprivate var presenter: PrefectureListPresenter! {
         didSet {
-            presenter.view = self as? PrefectureListPresenterView
+            presenter.view = self
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // presenter.setupUI()
-        // presenter.refreshData()
+        presenter.setupUI()
+        presenter.refreshData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let indexPathForSelectedRow: IndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
+        }
     }
     
     func injection(presenter: PrefectureListPresenter, routing: PrefectureListRouting) {
         self.presenter = presenter
         self.routing = routing
+    }
+    
+    func refreshData() {
+        presenter.refreshData()
     }
 }
 
@@ -45,16 +57,15 @@ extension PrefectureListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: PrefectureListCell = tableView.dequeueReusableCell(withIdentifier: "PrefectureListCell", for: indexPath) as! PrefectureListCell
-        if let prefectureVM = prefectureVM {
-            let viewModel: PrefectureViewModelProtocol = prefectureVM.prefectureViewModelProtocol(index: indexPath.row)
-            cell.viewModel = viewModel
-        }
+        //FIXME: 押した時にIDを渡す.
+        let viewModel: PrefectureViewModelProtocol = prefectureListVM.PrefectureViewModelProtocol(index: indexPath.row)
+        cell.viewModel = viewModel
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //TODO: VMのcount必要??
-        return 1
+        //FIXME: VMのcount必要??
+        return prefectureListVM.count()
     }
 }
 
@@ -66,6 +77,21 @@ extension PrefectureListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //routing.segueQuestionViewController(questionId: questionId)
+        presenter.selectedItem(index: indexPath.row)
+    }
+}
+
+extension PrefectureListViewController: PrefectureListPresenterView {
+    func segueWeather(prefectureId: String) {
+        routing.segueWeather(prefectureId: prefectureId)
+    }
+
+    func setupNavigation(title: String) {
+        self.navigationItem.title = title
+    }
+
+    func loadPrefectureListVM(prefectureListVM: PrefectureListViewModel) {
+        self.prefectureListVM = prefectureListVM
     }
 }
 

@@ -13,7 +13,7 @@ protocol PrefectureListDataStore {
     func getListData() -> Observable<PrefectureListEntity>
 }
 
-//TODO: わざわざここに出す必要あるのか??
+//TODO: わざわざここに出す必要あるのか??勉強のためということで.
 struct PrefectureListDataStoreImpl: PrefectureListDataStore {
     func getListData() -> Observable<PrefectureListEntity> {
         return Observable.create( { (observer) -> Disposable in

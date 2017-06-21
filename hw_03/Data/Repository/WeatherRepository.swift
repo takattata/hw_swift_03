@@ -14,7 +14,6 @@ protocol WeatherRepository {
 }
 
 struct WeatherRepositoryImpl: WeatherRepository {
-    //TODO: 考える. DataStoreだとFactoryいたけど...??
     static let shared = WeatherRepositoryImpl()
     
     func getWeatherData(prefectureId: String) -> Observable<WeatherEntity> {
