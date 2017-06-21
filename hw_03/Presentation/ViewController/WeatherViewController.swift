@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 class WeatherViewController: UIViewController {
-    fileprivate enum Cells: Int {
-        case Forecast
-        case Alert
+    fileprivate enum Section: Int {
+        case forecast
+        case alert
     }
     fileprivate let CellNames: [String] = ["ForecastCell", "AlertCell"]
     
@@ -56,16 +56,26 @@ extension WeatherViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let index = indexPath.section
-        let cell: WeatherCell = tableView.dequeueReusableCell(withIdentifier: CellNames[index], for: indexPath) as! WeatherCell
-        cell.selectionStyle = .none
-        cell.viewModel = weatherVM
-        
-        return cell
+        guard let section = Section(rawValue: indexPath.section) else {
+            return UITableViewCell()
+        }
+
+        switch section {
+        case .forecast:
+            let cell: WeatherCell = tableView.dequeueReusableCell(withIdentifier: CellNames[section.rawValue], for: indexPath) as! WeatherCell
+            cell.selectionStyle = .none
+            cell.viewModel = weatherVM
+            return cell
+        case .alert:
+            let cell: WeatherAlertCell = tableView.dequeueReusableCell(withIdentifier: CellNames[section.rawValue], for: indexPath) as! WeatherAlertCell
+            //FIXME: いる?
+            cell.selectionStyle = .none
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
 }
 

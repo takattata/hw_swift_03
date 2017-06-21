@@ -83,7 +83,7 @@
                                             <outlet property="thumbnail" destination="TnR-Jq-WjG" id="mFm-GG-3v9"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="EID-D5-4ac" userLabel="WeatherAlertCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeatherAlertCell" id="EID-D5-4ac" userLabel="WeatherAlertCell" customClass="WeatherAlertCell" customModule="hw_03" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="484" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EID-D5-4ac" id="cK6-AZ-acV">
@@ -104,6 +104,9 @@
                                                 <constraint firstItem="ZJl-1U-M5W" firstAttribute="centerX" secondItem="cK6-AZ-acV" secondAttribute="centerX" id="hga-nK-wvh"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="alertButton" destination="ZJl-1U-M5W" id="BUi-TK-jvs"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

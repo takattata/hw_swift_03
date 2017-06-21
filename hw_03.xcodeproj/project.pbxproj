@@ -45,6 +45,7 @@
 		3BD8D0B61EF8FDCE00A75ABB /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD8D0B51EF8FDCE00A75ABB /* UIColorExtension.swift */; };
 		3BD8D0B81EF92C6F00A75ABB /* PrefectureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD8D0B71EF92C6F00A75ABB /* PrefectureViewModel.swift */; };
 		3BD8D0BA1EFA15E000A75ABB /* PrefectureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD8D0B91EFA15E000A75ABB /* PrefectureModel.swift */; };
+		3BD8D0BC1EFA6DB100A75ABB /* WeatherAlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD8D0BB1EFA6DB100A75ABB /* WeatherAlertCell.swift */; };
 		7137C823D002A48BDB7BD82B /* Pods_hw_03.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F695CCE24E8537659D5029 /* Pods_hw_03.framework */; };
 		82B8AD71E02DB0271F926941 /* Pods_hw_03UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF89AEF163DC2FE79EFDF1C /* Pods_hw_03UITests.framework */; };
 		8311790EC7C8F55603902D77 /* Pods_hw_03Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5967ED2A9ACE4AD6E41EA6E /* Pods_hw_03Tests.framework */; };
@@ -116,6 +117,7 @@
 		3BD8D0B51EF8FDCE00A75ABB /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		3BD8D0B71EF92C6F00A75ABB /* PrefectureViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrefectureViewModel.swift; sourceTree = "<group>"; };
 		3BD8D0B91EFA15E000A75ABB /* PrefectureModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrefectureModel.swift; sourceTree = "<group>"; };
+		3BD8D0BB1EFA6DB100A75ABB /* WeatherAlertCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherAlertCell.swift; sourceTree = "<group>"; };
 		74D162CC0D5DBE51863802F8 /* Pods-hw_03UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hw_03UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hw_03UITests/Pods-hw_03UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7AF89AEF163DC2FE79EFDF1C /* Pods_hw_03UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hw_03UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		845C61947A91BB91C9CFBDA7 /* Pods-hw_03.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hw_03.release.xcconfig"; path = "Pods/Target Support Files/Pods-hw_03/Pods-hw_03.release.xcconfig"; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 			children = (
 				3BD8D0AD1EF8F09100A75ABB /* WeatherCell.swift */,
 				3BD8D0981EF8BFCA00A75ABB /* PrefectureListCell.swift */,
+				3BD8D0BB1EFA6DB100A75ABB /* WeatherAlertCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -677,6 +680,7 @@
 				3BD8D0791EF8AB3F00A75ABB /* WeatherRepository.swift in Sources */,
 				3BD8D0A81EF8EB3500A75ABB /* WeatherPresenter.swift in Sources */,
 				3BD8D09F1EF8DE4000A75ABB /* PrefectureListViewController.swift in Sources */,
+				3BD8D0BC1EFA6DB100A75ABB /* WeatherAlertCell.swift in Sources */,
 				3B31DA7E1EF7C3EA00854538 /* WeatherDataStore.swift in Sources */,
 				3BD8D0AE1EF8F09100A75ABB /* WeatherCell.swift in Sources */,
 				3BD8D09B1EF8C18300A75ABB /* PrefectureListViewModel.swift in Sources */,
