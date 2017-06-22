@@ -57,13 +57,20 @@ extension InformationViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let section = Section(rawValue: indexPath.section) else {
-//            return UITableViewCell()
-//        }
+        guard let section = Section(rawValue: indexPath.section) else {
+            return UITableViewCell()
+        }
 
         let index: Int = indexPath.section
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: CellNames[index], for: indexPath)
         cell.selectionStyle = .none
+        switch section {
+        case .send:
+            let sendCell: InformationSendCell = cell as! InformationSendCell
+            sendCell.presenter = presenter
+        default:
+            break
+        }
         
 //        switch section {
 //        case .name:

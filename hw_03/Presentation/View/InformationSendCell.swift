@@ -8,7 +8,29 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 class InformationSendCell: UITableViewCell {
     @IBOutlet weak var sendButton: SystemButton!
+    
+    var presenter: InformationPresenter! {
+        didSet {
+            update()
+        }
+    }
+    private var disposeBag: DisposeBag = DisposeBag()
+    
+    func update() {
+        setupUpdateButton()
+    }
+    
+    private func setupUpdateButton() {
+        sendButton.rx.tap
+            .subscribe(
+                onNext: { [weak self] in
+                    self?.presenter.sendInformation()
+                }
+            ).addDisposableTo(disposeBag)
+    }
 }

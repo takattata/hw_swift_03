@@ -49,6 +49,8 @@ class InformationPresenterImpl: InformationPresenter {
             .subscribe(
                 onNext: nil,
                 onError: { [weak self] error in
+                    //FIXME: 仮 確認用. 
+                    self?.view?.seguePrefectureList()
                     self?.errorHandling(error: error)
                 }, onCompleted: { [weak self] value in
                     self?.view?.seguePrefectureList()
