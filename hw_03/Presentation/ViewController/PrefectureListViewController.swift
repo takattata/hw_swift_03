@@ -28,8 +28,8 @@ class PrefectureListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenter.setupUI()
         presenter.refreshData()
+        presenter.setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {

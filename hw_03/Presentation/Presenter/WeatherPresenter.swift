@@ -42,7 +42,7 @@ class WeatherPresenterImpl: WeatherPresenter {
     }
     
     func setupUI() {
-        view?.setupNavigation(title: weatherModel.title)
+        view?.setupNavigation(title: "天気")//weatherModel.title)
     }
     
     func refreshData() {

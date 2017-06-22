@@ -10,6 +10,7 @@ import Foundation
 import Kingfisher
 import UIKit
 
+//FIXME: WeatherForecastCellとか改名する.
 class WeatherCell: UITableViewCell {
     @IBOutlet weak var thumbnail: UIImageView!
     @IBOutlet weak var maxLabel: UILabel!
@@ -23,13 +24,13 @@ class WeatherCell: UITableViewCell {
     }
     
     private func update() {
-        let url: URL = URL(string: viewModel.imageUrl())!
+        let url: URL = URL(string: "http://weather.livedoor.com/img/icon/9.gif")!//viewModel.imageUrl())!
         thumbnail.kf.setImage(with: url)
-        let max: String = viewModel.max()
+        let max: String = "最高気温: 30℃"//viewModel.max()
         maxLabel.attributedText = max.withNormalStyle(ofSize: 16)
-        let min: String = viewModel.min()
+        let min: String = "最低気温: 20℃"//viewModel.min()
         minLabel.attributedText = min.withNormalStyle(ofSize: 16)
-        let desc: String = viewModel.description()
+        let desc: String = "天気の詳細説明"//viewModel.description()
         descText.attributedText = desc.withNormalStyle()
     }
 }

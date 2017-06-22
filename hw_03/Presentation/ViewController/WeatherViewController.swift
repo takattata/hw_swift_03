@@ -14,7 +14,7 @@ class WeatherViewController: UIViewController {
         case forecast
         case alert
     }
-    fileprivate let CellNames: [String] = ["ForecastCell", "AlertCell"]
+    fileprivate let CellNames: [String] = ["WeatherCell", "WeatherAlertCell"]
     
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -36,8 +36,8 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenter.setupUI()
         presenter.refreshData()
+        presenter.setupUI()
     }
     
     func injection(presenter: WeatherPresenter, routing: WeatherRouting) {
@@ -52,7 +52,7 @@ class WeatherViewController: UIViewController {
 
 extension WeatherViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return CellNames.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,7 +75,7 @@ extension WeatherViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 1
     }
 }
 

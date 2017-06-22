@@ -22,8 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let repository: PrefectureListRepository = PrefectureListRepositoryImpl()
         let useCase: PrefectureListUseCase = PrefectureListUseCaseImpl(prefectureListRepository: repository)
         let presenter: PrefectureListPresenter = PrefectureListPresenterImpl(useCase: useCase)
-        let routing: PrefectureListRouting = PrefectureListRoutingImpl()
-        
+        var routing: PrefectureListRouting = PrefectureListRoutingImpl()
+        routing.viewController = vc
+
         vc.injection(presenter: presenter, routing: routing)
         let navigation = UINavigationController(rootViewController: vc)
         navigation.navigationBar.barTintColor = UIColor.orange
