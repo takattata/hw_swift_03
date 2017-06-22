@@ -20,7 +20,7 @@ struct WeatherDataStoreImpl: WeatherDataStore {
     func getWeatherData(prefectureId: String) -> Observable<WeatherEntity> {
         let url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=\(prefectureId)"
         
-        return Observable.create( { (observer) -> Disposable in
+        return Observable.create { observer -> Disposable in
             Alamofire.request(url).responseJSON { response in
                 switch response.result {
                 case .success(let value):
@@ -39,7 +39,7 @@ struct WeatherDataStoreImpl: WeatherDataStore {
             }
 
             return Disposables.create()
-        } )
+        }
     }
 }
 

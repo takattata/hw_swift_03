@@ -14,16 +14,16 @@ protocol PrefectureListUseCase {
 }
 
 struct PrefectureListUseCaseImpl: PrefectureListUseCase {
-    let prefectureListRepository: PrefectureListRepository
+    let repository: PrefectureListRepository
     
     init(prefectureListRepository: PrefectureListRepository) {
-        self.prefectureListRepository = prefectureListRepository
+        self.repository = prefectureListRepository
     }
     
     func getListData() -> Observable<PrefectureListModel> {
-        return prefectureListRepository.getListData()
-            .map { prefectureListEntity -> PrefectureListModel in
-                return PrefectureListModelTranslator().translate(prefectureListEntity)
+        return repository.getListData()
+            .map { entity -> PrefectureListModel in
+                return PrefectureListModelTranslator().translate(entity)
             }
     }
 }

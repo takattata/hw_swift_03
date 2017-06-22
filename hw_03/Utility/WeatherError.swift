@@ -11,11 +11,14 @@ import Foundation
 enum WeatherAppError: Error {
     case generic
     case network
+    case noParameter
     
     func message() -> String {
         switch self {
         case .network:
             return "サーバーからデータの取得に失敗しました"
+        case .noParameter:
+            return "パラメータないっすよ"
         default:
             return "アプリのエラーです"
         }

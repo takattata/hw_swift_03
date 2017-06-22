@@ -14,7 +14,10 @@ class WeatherViewController: UIViewController {
         case forecast
         case alert
     }
-    fileprivate let CellNames: [String] = ["WeatherCell", "WeatherAlertCell"]
+    fileprivate let CellNames: [String] = [
+        "WeatherCell",
+        "WeatherAlertCell"
+    ]
     
     @IBOutlet weak var tableView: UITableView! {
         didSet {

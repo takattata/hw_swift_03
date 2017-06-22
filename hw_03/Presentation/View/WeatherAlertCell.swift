@@ -10,5 +10,5 @@ import Foundation
 import UIKit
 
 class WeatherAlertCell: UITableViewCell {
-    @IBOutlet weak var alertButton: UIButton!
+    @IBOutlet weak var alertButton: SystemButton!
 }
