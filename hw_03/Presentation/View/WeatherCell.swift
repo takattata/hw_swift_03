@@ -19,18 +19,19 @@ class WeatherCell: UITableViewCell {
     
     var viewModel: WeatherViewModelProtocol! {
         didSet {
+//            print("WeatherCell::viewModel: \(viewModel.title())")
             update()
         }
     }
     
     private func update() {
-        let url: URL = URL(string: "http://weather.livedoor.com/img/icon/9.gif")!//viewModel.imageUrl())!
+        let url: URL = URL(string: viewModel.imageUrl())!
         thumbnail.kf.setImage(with: url)
-        let max: String = "最高気温: 30℃"//viewModel.max()
+        let max: String = viewModel.max()
         maxLabel.attributedText = max.withNormalStyle(ofSize: 16)
-        let min: String = "最低気温: 20℃"//viewModel.min()
+        let min: String = viewModel.min()
         minLabel.attributedText = min.withNormalStyle(ofSize: 16)
-        let desc: String = "天気の詳細説明"//viewModel.description()
+        let desc: String = viewModel.description()
         descText.attributedText = desc.withNormalStyle()
     }
 }

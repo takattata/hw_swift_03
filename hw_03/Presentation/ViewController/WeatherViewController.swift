@@ -29,7 +29,11 @@ class WeatherViewController: UIViewController {
     }
     
     fileprivate var routing: WeatherRouting!
-    fileprivate var weatherVM: WeatherViewModelProtocol!
+    fileprivate var weatherVM: WeatherViewModelProtocol! {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     fileprivate var presenter: WeatherPresenter! {
         didSet {
             presenter.view = self
@@ -38,6 +42,7 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("VC::viewDidLoad")
         
         presenter.refreshData()
         presenter.setupUI()
@@ -65,9 +70,13 @@ extension WeatherViewController: UITableViewDataSource {
 
         switch section {
         case .forecast:
+            print("VC::tableView: cellForRowAt: .forecast")
             let cell: WeatherCell = tableView.dequeueReusableCell(withIdentifier: CellNames[section.rawValue], for: indexPath) as! WeatherCell
             cell.selectionStyle = .none
-            cell.viewModel = weatherVM
+            if let viewModel = weatherVM {
+                cell.viewModel = viewModel
+            }
+//            print("VC::loadWeatherVM: \(weatherVM.title())")
             return cell
         case .alert:
             let cell: WeatherAlertCell = tableView.dequeueReusableCell(withIdentifier: CellNames[section.rawValue], for: indexPath) as! WeatherAlertCell
@@ -98,6 +107,7 @@ extension WeatherViewController: WeatherPresenterView {
     }
     
     func loadWeatherVM(weatherVM: WeatherViewModel) {
+        print("VC::loadWeatherVM: \(weatherVM.title())")
         self.weatherVM = weatherVM
     }
 }

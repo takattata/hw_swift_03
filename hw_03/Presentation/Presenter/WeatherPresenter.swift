@@ -46,13 +46,16 @@ class WeatherPresenterImpl: WeatherPresenter {
     }
     
     func refreshData() {
+        print("WeatherPresenter::refreshData: call")
         useCase.getWeatherData(prefectureId: self.prefectureId)
             .subscribe(
                 onNext: { [weak self] weatherModel in
                     //                    self?.view?.changePrefectureListStatus
                     self?.weatherModel = weatherModel
+                    print("useCase.getWeatherData: onNext \(weatherModel.title)")
                 }, onError: { [weak self] error in
                     self?.errorHandling(error: error)
+                    print("useCase.getWeatherData: onError##")
                 }, onCompleted: nil, onDisposed: nil)
             .addDisposableTo(disposeBag)
     }

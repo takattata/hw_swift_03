@@ -17,6 +17,7 @@ struct WeatherRepositoryImpl: WeatherRepository {
     static let shared = WeatherRepositoryImpl()
     
     func getWeatherData(prefectureId: String) -> Observable<WeatherEntity> {
+        print("WeatherRepository::getWeatherData: call")
         let dataStore: WeatherDataStore = WeatherDataStoreFactory.createWeatherDataStore()
         
         return dataStore.getWeatherData(prefectureId: prefectureId)

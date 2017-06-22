@@ -18,7 +18,11 @@ class PrefectureListViewController: UIViewController {
     }
     
     fileprivate var routing: PrefectureListRouting!
-    fileprivate var prefectureListVM: PrefectureListViewModel!
+    fileprivate var prefectureListVM: PrefectureListViewModelProtocol! {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     fileprivate var presenter: PrefectureListPresenter! {
         didSet {
             presenter.view = self
