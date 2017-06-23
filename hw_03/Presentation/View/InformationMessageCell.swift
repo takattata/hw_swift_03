@@ -1,5 +1,5 @@
 //
-//  InformationNameCell.swift
+//  InformationMessageCell.swift
 //  hw_03
 //
 //  Created by Takashima on 2017/06/22.
@@ -10,18 +10,17 @@ import Foundation
 import UIKit
 import RxSwift
 
-class InformationNameCell: UITableViewCell {
-    @IBOutlet weak var nameText: UITextField!
-
+class InformationMessageCell: UITableViewCell {
+    @IBOutlet weak var messageText: UITextView!
+    
     var presenter: InformationPresenter! {
         didSet {
             updateCell()
         }
     }
-
+    
     private var disposeBag: DisposeBag = DisposeBag()
-
-    //FIXME: これいつ呼ばれるんだっけ?.
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         
@@ -29,14 +28,14 @@ class InformationNameCell: UITableViewCell {
     }
     
     func updateCell() {
-        setupNameField()
+        setupAddress()
     }
     
-    private func setupNameField() {
-        nameText.rx.text.changed
-            .subscribe(onNext: { [weak self] name in
-                self?.presenter.name.value = name!
-            }
-        ).addDisposableTo(disposeBag)
+    private func setupAddress() {
+        messageText.rx.text.changed
+            .subscribe(onNext: { [weak self] message in
+                self?.presenter.message.value = message!
+                }
+            ).addDisposableTo(disposeBag)
     }
 }

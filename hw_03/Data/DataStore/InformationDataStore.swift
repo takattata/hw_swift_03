@@ -29,12 +29,12 @@ struct InformationDataStoreImpl: InformationDataStore {
         
         return Observable.create { observer -> Disposable in
             Alamofire.request(
-                "***slackURL***",
+                "***slack***",
                 method: .post,
                 parameters: jsonMessage.dictionaryObject,
                 encoding: JSONEncoding.default,
                 headers: nil)
-                .responseJSON { response/*(response: DataResponse<JSON>)*/ in
+                .responseString { response in
                     switch response.result {
                     case .success:
                         observer.onCompleted()
@@ -44,7 +44,6 @@ struct InformationDataStoreImpl: InformationDataStore {
             }
             
             return Disposables.create()
-            //FIXME: PrefectureListに飛ぶ.
         }
     }
 }

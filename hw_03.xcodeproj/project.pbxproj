@@ -15,6 +15,7 @@
 		3B1848801EF7B46600C71E9B /* hw_03UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B18487F1EF7B46600C71E9B /* hw_03UITests.swift */; };
 		3B31DA7E1EF7C3EA00854538 /* WeatherDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B31DA7D1EF7C3EA00854538 /* WeatherDataStore.swift */; };
 		3B31DA801EF7C6AD00854538 /* WeatherEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B31DA7F1EF7C6AD00854538 /* WeatherEntity.swift */; };
+		3B7D87651EFCB3F3002A425C /* InformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D87641EFCB3F3002A425C /* InformationCell.swift */; };
 		3BD8D0741EF8A49B00A75ABB /* WeatherNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD8D0731EF8A49B00A75ABB /* WeatherNetworkRequest.swift */; };
 		3BD8D0771EF8A95500A75ABB /* WeatherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD8D0761EF8A95500A75ABB /* WeatherError.swift */; };
 		3BD8D0791EF8AB3F00A75ABB /* WeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD8D0781EF8AB3F00A75ABB /* WeatherRepository.swift */; };
@@ -54,8 +55,8 @@
 		3BD8D0C81EFB67E500A75ABB /* InformationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD8D0C71EFB67E500A75ABB /* InformationUseCase.swift */; };
 		3BD8D0CA1EFB680B00A75ABB /* InformationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD8D0C91EFB680B00A75ABB /* InformationPresenter.swift */; };
 		3BD8D0CC1EFB698C00A75ABB /* InformationNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD8D0CB1EFB698C00A75ABB /* InformationNameCell.swift */; };
-		3BD8D0CE1EFB69A000A75ABB /* InformationAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD8D0CD1EFB69A000A75ABB /* InformationAddressCell.swift */; };
-		3BD8D0D01EFB69DD00A75ABB /* InformationDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD8D0CF1EFB69DD00A75ABB /* InformationDescriptionCell.swift */; };
+		3BD8D0CE1EFB69A000A75ABB /* InformationEmailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD8D0CD1EFB69A000A75ABB /* InformationEmailCell.swift */; };
+		3BD8D0D01EFB69DD00A75ABB /* InformationMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD8D0CF1EFB69DD00A75ABB /* InformationMessageCell.swift */; };
 		3BD8D0D21EFB69FA00A75ABB /* InformationSendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD8D0D11EFB69FA00A75ABB /* InformationSendCell.swift */; };
 		3BD8D0D41EFB887800A75ABB /* InformationRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD8D0D31EFB887800A75ABB /* InformationRouting.swift */; };
 		7137C823D002A48BDB7BD82B /* Pods_hw_03.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F695CCE24E8537659D5029 /* Pods_hw_03.framework */; };
@@ -99,6 +100,7 @@
 		3B1848811EF7B46600C71E9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B31DA7D1EF7C3EA00854538 /* WeatherDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherDataStore.swift; sourceTree = "<group>"; };
 		3B31DA7F1EF7C6AD00854538 /* WeatherEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherEntity.swift; path = hw_03/Data/Entity/WeatherEntity.swift; sourceTree = SOURCE_ROOT; };
+		3B7D87641EFCB3F3002A425C /* InformationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationCell.swift; sourceTree = "<group>"; };
 		3BD8D0731EF8A49B00A75ABB /* WeatherNetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherNetworkRequest.swift; sourceTree = "<group>"; };
 		3BD8D0761EF8A95500A75ABB /* WeatherError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherError.swift; sourceTree = "<group>"; };
 		3BD8D0781EF8AB3F00A75ABB /* WeatherRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherRepository.swift; sourceTree = "<group>"; };
@@ -138,8 +140,8 @@
 		3BD8D0C71EFB67E500A75ABB /* InformationUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationUseCase.swift; sourceTree = "<group>"; };
 		3BD8D0C91EFB680B00A75ABB /* InformationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationPresenter.swift; sourceTree = "<group>"; };
 		3BD8D0CB1EFB698C00A75ABB /* InformationNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationNameCell.swift; sourceTree = "<group>"; };
-		3BD8D0CD1EFB69A000A75ABB /* InformationAddressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationAddressCell.swift; sourceTree = "<group>"; };
-		3BD8D0CF1EFB69DD00A75ABB /* InformationDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationDescriptionCell.swift; sourceTree = "<group>"; };
+		3BD8D0CD1EFB69A000A75ABB /* InformationEmailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationEmailCell.swift; sourceTree = "<group>"; };
+		3BD8D0CF1EFB69DD00A75ABB /* InformationMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationMessageCell.swift; sourceTree = "<group>"; };
 		3BD8D0D11EFB69FA00A75ABB /* InformationSendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationSendCell.swift; sourceTree = "<group>"; };
 		3BD8D0D31EFB887800A75ABB /* InformationRouting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationRouting.swift; sourceTree = "<group>"; };
 		74D162CC0D5DBE51863802F8 /* Pods-hw_03UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hw_03UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hw_03UITests/Pods-hw_03UITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -358,13 +360,14 @@
 		3BD8D0951EF8BF5B00A75ABB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3BD8D0AD1EF8F09100A75ABB /* WeatherCell.swift */,
 				3BD8D0981EF8BFCA00A75ABB /* PrefectureListCell.swift */,
+				3BD8D0AD1EF8F09100A75ABB /* WeatherCell.swift */,
 				3BD8D0BB1EFA6DB100A75ABB /* WeatherAlertCell.swift */,
 				3BD8D0CB1EFB698C00A75ABB /* InformationNameCell.swift */,
-				3BD8D0CD1EFB69A000A75ABB /* InformationAddressCell.swift */,
-				3BD8D0CF1EFB69DD00A75ABB /* InformationDescriptionCell.swift */,
+				3BD8D0CD1EFB69A000A75ABB /* InformationEmailCell.swift */,
+				3BD8D0CF1EFB69DD00A75ABB /* InformationMessageCell.swift */,
 				3BD8D0D11EFB69FA00A75ABB /* InformationSendCell.swift */,
+				3B7D87641EFCB3F3002A425C /* InformationCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -734,6 +737,7 @@
 				3BD8D0C61EFB67C300A75ABB /* InformationRepository.swift in Sources */,
 				3BD8D0B01EF8F0A200A75ABB /* PrefectureListPresenter.swift in Sources */,
 				3BD8D0B41EF8FD9B00A75ABB /* StringExtension.swift in Sources */,
+				3B7D87651EFCB3F3002A425C /* InformationCell.swift in Sources */,
 				3BD8D0A61EF8EACD00A75ABB /* WeatherRouting.swift in Sources */,
 				3B1848621EF7B46500C71E9B /* ViewController.swift in Sources */,
 				3BD8D0A21EF8E81300A75ABB /* PrefectureListRouting.swift in Sources */,
@@ -746,14 +750,14 @@
 				3BD8D0CA1EFB680B00A75ABB /* InformationPresenter.swift in Sources */,
 				3BD8D0BA1EFA15E000A75ABB /* PrefectureModel.swift in Sources */,
 				3BD8D0AC1EF8ED3600A75ABB /* WeatherViewController.swift in Sources */,
-				3BD8D0CE1EFB69A000A75ABB /* InformationAddressCell.swift in Sources */,
+				3BD8D0CE1EFB69A000A75ABB /* InformationEmailCell.swift in Sources */,
 				3B1848601EF7B46500C71E9B /* AppDelegate.swift in Sources */,
 				3BD8D0991EF8BFCA00A75ABB /* PrefectureListCell.swift in Sources */,
 				3BD8D0A41EF8E83500A75ABB /* Routing.swift in Sources */,
 				3B31DA801EF7C6AD00854538 /* WeatherEntity.swift in Sources */,
 				3BD8D08C1EF8B33400A75ABB /* PrefectureListModelTranslator.swift in Sources */,
 				3BD8D0841EF8AF0C00A75ABB /* PrefectureListDataStore.swift in Sources */,
-				3BD8D0D01EFB69DD00A75ABB /* InformationDescriptionCell.swift in Sources */,
+				3BD8D0D01EFB69DD00A75ABB /* InformationMessageCell.swift in Sources */,
 				3BD8D0741EF8A49B00A75ABB /* WeatherNetworkRequest.swift in Sources */,
 				3BD8D0861EF8B1FC00A75ABB /* WeatherModel.swift in Sources */,
 				3BD8D0C01EFB5EB600A75ABB /* InformationViewController.swift in Sources */,

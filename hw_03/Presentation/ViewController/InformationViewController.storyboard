@@ -62,7 +62,7 @@
                                             <outlet property="nameText" destination="lM3-MF-81l" id="WNd-EO-ZZR"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InformationAddressCell" rowHeight="81" id="eqA-8U-SEP" userLabel="InformationAddressCell" customClass="InformationAddressCell" customModule="hw_03" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InformationEmailCell" rowHeight="81" id="eqA-8U-SEP" userLabel="InformationAddressCell" customClass="InformationEmailCell" customModule="hw_03" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="114" width="375" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eqA-8U-SEP" id="y9m-hj-798">
@@ -95,10 +95,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="addressText" destination="faL-YO-TtW" id="dwj-ek-ehP"/>
+                                            <outlet property="emailText" destination="faL-YO-TtW" id="DqE-a4-khG"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InformationDescriptionCell" rowHeight="269" id="FhM-X3-igR" userLabel="InformationDescriptionCell" customClass="InformationDescriptionCell" customModule="hw_03" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InformationMessageCell" rowHeight="269" id="FhM-X3-igR" userLabel="InformationDescriptionCell" customClass="InformationMessageCell" customModule="hw_03" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="195" width="375" height="269"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FhM-X3-igR" id="Elg-vn-UEb">
@@ -130,7 +130,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="descText" destination="Ezd-s5-AwQ" id="XN9-h1-VAg"/>
+                                            <outlet property="messageText" destination="Ezd-s5-AwQ" id="V0a-Qq-3Ty"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InformationSendCell" rowHeight="42" id="YAU-Vy-wTH" userLabel="InformationSendCell" customClass="InformationSendCell" customModule="hw_03" customModuleProvider="target">

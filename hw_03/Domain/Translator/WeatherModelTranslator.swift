@@ -22,7 +22,7 @@ struct WeatherModelTranslator: Translator {
         var url = ""
         var max = ""
         var min = ""
-        if let forecast = entity.forecasts?[Day.Today.rawValue] {
+        if let forecast = entity.forecasts?[Day.Tommorow.rawValue] {
             url = forecast.imageUrl ?? ""
             max = forecast.max ?? ""
             min = forecast.min ?? ""

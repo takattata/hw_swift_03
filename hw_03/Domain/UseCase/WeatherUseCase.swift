@@ -21,10 +21,8 @@ struct WeatherUseCaseImpl: WeatherUseCase {
     }
     
     func getWeatherData(prefectureId: String) -> Observable<WeatherModel> {
-        print("WeatherUseCase::getWeatherData: call")
         return weatherRepository.getWeatherData(prefectureId: prefectureId)
             .map { weatherEntity -> WeatherModel in
-                print("weatherRepository.getWeatherData: map: \(String(describing: weatherEntity.title))")
                 return WeatherModelTranslator().translate(weatherEntity)
             }
     }

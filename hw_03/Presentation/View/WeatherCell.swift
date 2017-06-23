@@ -19,7 +19,6 @@ class WeatherCell: UITableViewCell {
     
     var viewModel: WeatherViewModelProtocol! {
         didSet {
-//            print("WeatherCell::viewModel: \(viewModel.title())")
             update()
         }
     }
@@ -28,9 +27,9 @@ class WeatherCell: UITableViewCell {
         let url: URL = URL(string: viewModel.imageUrl())!
         thumbnail.kf.setImage(with: url)
         let max: String = viewModel.max()
-        maxLabel.attributedText = max.withNormalStyle(ofSize: 16)
+        maxLabel.attributedText = "最高気温: \(max)℃".withNormalStyle(ofSize: 16)
         let min: String = viewModel.min()
-        minLabel.attributedText = min.withNormalStyle(ofSize: 16)
+        minLabel.attributedText = "最低気温: \(min)℃".withNormalStyle(ofSize: 16)
         let desc: String = viewModel.description()
         descText.attributedText = desc.withNormalStyle()
     }

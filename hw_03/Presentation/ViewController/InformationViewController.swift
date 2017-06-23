@@ -12,14 +12,14 @@ import UIKit
 class InformationViewController: UIViewController {
     fileprivate enum Section: Int {
         case name
-        case address
-        case description
+        case email
+        case message
         case send
     }
     fileprivate let CellNames: [String] = [
         "InformationNameCell",
-        "InformationAddressCell",
-        "InformationDescriptionCell",
+        "InformationEmailCell",
+        "InformationMessageCell",
         "InformationSendCell"
     ]
 
@@ -65,19 +65,19 @@ extension InformationViewController: UITableViewDataSource {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: CellNames[index], for: indexPath)
         cell.selectionStyle = .none
         switch section {
+        case .name:
+            let nameCell: InformationNameCell = cell as! InformationNameCell
+            nameCell.presenter = presenter
+        case .email:
+            let emailCell: InformationEmailCell = cell as! InformationEmailCell
+            emailCell.presenter = presenter
+        case .message:
+            let messageCell: InformationMessageCell = cell as! InformationMessageCell
+            messageCell.presenter = presenter
         case .send:
             let sendCell: InformationSendCell = cell as! InformationSendCell
             sendCell.presenter = presenter
-        default:
-            break
         }
-        
-//        switch section {
-//        case .name:
-//        case .address:
-//        case .description:
-//        case .send:
-//        }
         
         return cell
     }

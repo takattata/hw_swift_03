@@ -29,9 +29,9 @@ class InformationPresenterImpl: InformationPresenter {
     //FIXME: これ必要ないのか?本来modalのみ.他の時、何に使ってるのかわかってない.
     var error: WeatherAppError?
 
-    var name    = Variable<String>("")
-    var email   = Variable<String>("")
-    var message = Variable<String>("")
+    var name: Variable<String> = Variable<String>("")
+    var email: Variable<String> = Variable<String>("")
+    var message: Variable<String> = Variable<String>("")
     
     let useCase: InformationUseCase
     private let disposeBag: DisposeBag = DisposeBag()
@@ -45,12 +45,11 @@ class InformationPresenterImpl: InformationPresenter {
     }
     
     func sendInformation() {
-         useCase.sendInformation(name: name.value, email: email.value, message: message.value)
+        useCase.sendInformation(name: name.value, email: email.value, message: message.value)
             .subscribe(
                 onNext: nil,
                 onError: { [weak self] error in
-                    //FIXME: 仮 確認用. 
-                    self?.view?.seguePrefectureList()
+                    //FIXME: 仮 確認用.
                     self?.errorHandling(error: error)
                 }, onCompleted: { [weak self] value in
                     self?.view?.seguePrefectureList()
