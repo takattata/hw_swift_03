@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 import RxSwift
 
-fileprivate extension Selector {
-    static let keyboardWillShow =
-        #selector(InformationPresenterImpl.keyboardWillShow(notification:))
-}
+//fileprivate extension Selector {
+//    static let keyboardWillShow =
+//        #selector(InformationPresenterImpl.keyboardWillShow(notification:))
+//}
 
 class InformationViewController: UIViewController {
     fileprivate enum Section: Int {
@@ -151,5 +151,18 @@ extension InformationViewController: InformationPresenterView {
                 self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
             }
         }
+    }
+    
+    func setupViewGesture() {
+        let gesture: UITapGestureRecognizer = UITapGestureRecognizer()
+        gesture.cancelsTouchesInView = false
+        
+        gesture.rx.event
+            .subscribe(
+                onNext: { [weak self] _ in
+                    self?.view.endEditing(true)
+                }
+            ).addDisposableTo(disposeBag)
+        self.view.addGestureRecognizer(gesture)
     }
 }

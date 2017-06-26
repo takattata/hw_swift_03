@@ -27,6 +27,7 @@ protocol InformationPresenterView: class {
     func scrollUpView()
     func scrollDownView()
     func keyboardWillShow(notification: Notification)
+    func setupViewGesture()
 }
 
 class InformationPresenterImpl: InformationPresenter {
@@ -47,6 +48,7 @@ class InformationPresenterImpl: InformationPresenter {
     
     func setupUI() {
         view?.setupNavigation(title: "お問い合わせ")
+        view?.setupViewGesture()
     }
     
     func sendInformation() {
