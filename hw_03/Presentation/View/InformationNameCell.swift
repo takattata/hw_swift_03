@@ -30,6 +30,8 @@ class InformationNameCell: UITableViewCell {
     
     func updateCell() {
         setupNameField()
+        
+        self.nameText.delegate = self
     }
     
     private func setupNameField() {

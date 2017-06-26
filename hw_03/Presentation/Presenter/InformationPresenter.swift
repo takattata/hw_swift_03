@@ -19,7 +19,6 @@ protocol InformationPresenter {
     func sendInformation()
     func scrollUpView()
     func scrollDownView()
-//    func keyboardWillShow(notification: Notification)
 }
 
 protocol InformationPresenterView: class {
@@ -55,7 +54,6 @@ class InformationPresenterImpl: InformationPresenter {
             .subscribe(
                 onNext: nil,
                 onError: { [weak self] error in
-                    //FIXME: 仮 確認用.
                     self?.errorHandling(error: error)
                 }, onCompleted: { [weak self] value in
                     self?.view?.seguePrefectureList()

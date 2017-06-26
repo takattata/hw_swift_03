@@ -29,6 +29,8 @@ class InformationEmailCell: UITableViewCell {
 
     func updateCell() {
         setupAddress()
+        
+        self.emailText.delegate = self
     }
     
     private func setupAddress() {

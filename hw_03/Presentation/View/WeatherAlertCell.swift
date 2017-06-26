@@ -26,7 +26,6 @@ class WeatherAlertCell: UITableViewCell {
     
     private func setupAlertButton() {
         alertButton.rx.tap
-//            .debounce(0.5, scheduler: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] in
                     self?.presenter.presentAlert()
