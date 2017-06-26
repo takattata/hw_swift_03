@@ -8,6 +8,12 @@
 
 import Foundation
 import UIKit
+import RxSwift
+
+fileprivate extension Selector {
+    static let keyboardWillShow =
+        #selector(InformationPresenterImpl.keyboardWillShow(notification:))
+}
 
 class InformationViewController: UIViewController {
     fileprivate enum Section: Int {
@@ -32,7 +38,7 @@ class InformationViewController: UIViewController {
         }
     }
 
-    fileprivate var keyboardHeight: CGFloat = 0.0
+    fileprivate var disposeBag: DisposeBag = DisposeBag()
     fileprivate var routing: InformationRouting!
     fileprivate var presenter: InformationPresenter! {
         didSet {
@@ -42,10 +48,10 @@ class InformationViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        let notification: NotificationCenter = .default
-        //FIXME: Selectorを切り出す.  
-//        notification.addObserver(self, selector: <#T##Selector#>, name: <#T##NSNotification.Name?#>, object: <#T##Any?#>)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
     override func viewDidLoad() {
@@ -120,16 +126,30 @@ extension InformationViewController: InformationPresenterView {
     }
     
     func scrollUpView() {
-        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: self.keyboardHeight, right: 0)
-        let indexPath: IndexPath = IndexPath(row: 0, section: Section.message.rawValue)
-        
-        self.tableView.contentInset = contentInsets
-        self.tableView.scrollIndicatorInsets = contentInsets
-        self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        NotificationCenter.default.rx.notification(NSNotification.Name.UIKeyboardWillShow, object: nil)
+            .subscribe(
+                onNext: { [weak self] notification in
+                    self?.keyboardWillShow(notification: notification)
+                }
+            ).addDisposableTo(disposeBag)
     }
     
     func scrollDownView() {
         self.tableView.contentInset = UIEdgeInsets.zero
         self.tableView.scrollIndicatorInsets = UIEdgeInsets.zero
+    }
+
+    func keyboardWillShow(notification: Notification) {
+        if let userInfo = notification.userInfo {
+            if let keyboardFrameInfo = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+                let keyboardHeight = keyboardFrameInfo.cgRectValue.height
+                let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+                let indexPath: IndexPath = IndexPath(row: 0, section: Section.message.rawValue)
+                
+                self.tableView.contentInset = contentInsets
+                self.tableView.scrollIndicatorInsets = contentInsets
+                self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+            }
+        }
     }
 }

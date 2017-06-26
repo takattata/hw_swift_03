@@ -29,6 +29,8 @@ class InformationMessageCell: UITableViewCell {
     
     func updateCell() {
         setupAddress()
+
+        self.messageText.delegate = self
     }
     
     private func setupAddress() {

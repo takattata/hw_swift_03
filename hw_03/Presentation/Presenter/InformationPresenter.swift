@@ -19,6 +19,7 @@ protocol InformationPresenter {
     func sendInformation()
     func scrollUpView()
     func scrollDownView()
+//    func keyboardWillShow(notification: Notification)
 }
 
 protocol InformationPresenterView: class {
@@ -26,6 +27,7 @@ protocol InformationPresenterView: class {
     func seguePrefectureList()
     func scrollUpView()
     func scrollDownView()
+    func keyboardWillShow(notification: Notification)
 }
 
 class InformationPresenterImpl: InformationPresenter {
@@ -67,6 +69,10 @@ class InformationPresenterImpl: InformationPresenter {
     
     func scrollDownView() {
         view?.scrollDownView()
+    }
+    
+    @objc func keyboardWillShow(notification: Notification) {
+        view?.keyboardWillShow(notification: notification)
     }
     
     private func errorHandling(error: Error) {
