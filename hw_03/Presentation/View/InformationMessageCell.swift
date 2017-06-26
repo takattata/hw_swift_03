@@ -39,3 +39,17 @@ class InformationMessageCell: UITableViewCell {
             ).addDisposableTo(disposeBag)
     }
 }
+
+extension InformationMessageCell: UITextViewDelegate {
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        presenter.scrollUpView()
+        
+        return true
+    }
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        presenter.scrollDownView()
+        
+        return true
+    }
+}

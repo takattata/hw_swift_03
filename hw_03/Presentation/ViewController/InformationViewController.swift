@@ -31,12 +31,21 @@ class InformationViewController: UIViewController {
             tableView.isScrollEnabled = false
         }
     }
-    
+
+    fileprivate var keyboardHeight: CGFloat = 0.0
     fileprivate var routing: InformationRouting!
     fileprivate var presenter: InformationPresenter! {
         didSet {
             presenter.view = self
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        let notification: NotificationCenter = .default
+        //FIXME: Selectorを切り出す.  
+//        notification.addObserver(self, selector: <#T##Selector#>, name: <#T##NSNotification.Name?#>, object: <#T##Any?#>)
     }
     
     override func viewDidLoad() {
@@ -108,5 +117,19 @@ extension InformationViewController: InformationPresenterView {
 
     func seguePrefectureList() {
         routing.seguePrefectureList()
+    }
+    
+    func scrollUpView() {
+        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: self.keyboardHeight, right: 0)
+        let indexPath: IndexPath = IndexPath(row: 0, section: Section.message.rawValue)
+        
+        self.tableView.contentInset = contentInsets
+        self.tableView.scrollIndicatorInsets = contentInsets
+        self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+    }
+    
+    func scrollDownView() {
+        self.tableView.contentInset = UIEdgeInsets.zero
+        self.tableView.scrollIndicatorInsets = UIEdgeInsets.zero
     }
 }

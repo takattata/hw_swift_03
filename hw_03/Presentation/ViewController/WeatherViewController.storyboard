@@ -48,6 +48,9 @@
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Mvp-na-Ln2">
                                                     <rect key="frame" x="24" y="88" width="327" height="343.5"/>
                                                     <color key="backgroundColor" red="0.94488746761658027" green="0.94488746761658027" blue="0.94488746761658027" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="343.5" id="Rqr-5j-G7s"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>

@@ -17,11 +17,15 @@ protocol InformationPresenter {
     
     func setupUI()
     func sendInformation()
+    func scrollUpView()
+    func scrollDownView()
 }
 
 protocol InformationPresenterView: class {
     func setupNavigation(title: String)
     func seguePrefectureList()
+    func scrollUpView()
+    func scrollDownView()
 }
 
 class InformationPresenterImpl: InformationPresenter {
@@ -55,6 +59,14 @@ class InformationPresenterImpl: InformationPresenter {
                     self?.view?.seguePrefectureList()
                 }, onDisposed: nil)
             .addDisposableTo(disposeBag)
+    }
+    
+    func scrollUpView() {
+        view?.scrollUpView()
+    }
+    
+    func scrollDownView() {
+        view?.scrollDownView()
     }
     
     private func errorHandling(error: Error) {

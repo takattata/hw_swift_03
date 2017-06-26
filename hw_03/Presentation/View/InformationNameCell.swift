@@ -40,3 +40,11 @@ class InformationNameCell: UITableViewCell {
         ).addDisposableTo(disposeBag)
     }
 }
+
+extension InformationNameCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+}

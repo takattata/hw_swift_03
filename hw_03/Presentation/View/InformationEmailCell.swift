@@ -39,3 +39,11 @@ class InformationEmailCell: UITableViewCell {
         ).addDisposableTo(disposeBag)
     }
 }
+
+extension InformationEmailCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+}
