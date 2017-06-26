@@ -8,7 +8,29 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 class WeatherAlertCell: UITableViewCell {
     @IBOutlet weak var alertButton: SystemButton!
+    
+    var presenter: WeatherPresenter! {
+        didSet {
+            update()
+        }
+    }
+    private var disposeBag: DisposeBag = DisposeBag()
+    
+    func update() {
+        setupAlertButton()
+    }
+    
+    private func setupAlertButton() {
+        alertButton.rx.tap
+//            .debounce(0.5, scheduler: MainScheduler.instance)
+            .subscribe(
+                onNext: { [weak self] in
+                    self?.presenter.presentAlert()
+                }
+            ).addDisposableTo(disposeBag)
+    }
 }

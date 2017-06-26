@@ -77,7 +77,7 @@ extension WeatherViewController: UITableViewDataSource {
             return cell
         case .alert:
             let cell: WeatherAlertCell = tableView.dequeueReusableCell(withIdentifier: CellNames[section.rawValue], for: indexPath) as! WeatherAlertCell
-            //FIXME: いる?
+            cell.presenter = presenter
             cell.selectionStyle = .none
             return cell
         }
@@ -105,5 +105,14 @@ extension WeatherViewController: WeatherPresenterView {
     
     func loadWeatherVM(weatherVM: WeatherViewModel) {
         self.weatherVM = weatherVM
+    }
+    
+    func presentAlert(alert: UIAlertController) {
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func seguePrefectureList() {
+        self.navigationController?.popViewController(animated: true)
+//        routing.seguePrefectureList()
     }
 }

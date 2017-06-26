@@ -16,8 +16,8 @@ protocol PrefectureListUseCase {
 struct PrefectureListUseCaseImpl: PrefectureListUseCase {
     let repository: PrefectureListRepository
     
-    init(prefectureListRepository: PrefectureListRepository) {
-        self.repository = prefectureListRepository
+    init(repository: PrefectureListRepository) {
+        self.repository = repository
     }
     
     func getListData() -> Observable<PrefectureListModel> {

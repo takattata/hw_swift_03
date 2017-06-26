@@ -15,11 +15,14 @@ protocol WeatherPresenter {
     
     func setupUI()
     func refreshData()
+    func presentAlert()
 }
 
 protocol WeatherPresenterView: class {
     func setupNavigation(title: String)
     func loadWeatherVM(weatherVM: WeatherViewModel)
+    func presentAlert(alert: UIAlertController)
+    func seguePrefectureList()
 }
 
 class WeatherPresenterImpl: WeatherPresenter {
@@ -55,6 +58,21 @@ class WeatherPresenterImpl: WeatherPresenter {
                     self?.errorHandling(error: error)
                 }, onCompleted: nil, onDisposed: nil)
             .addDisposableTo(disposeBag)
+    }
+    
+    func presentAlert() {
+        let alert: UIAlertController = UIAlertController(title: "title", message: "message", preferredStyle: .alert)
+        
+        let action: UIAlertAction = UIAlertAction(
+            title: "OK",
+            style: .cancel,
+            handler: { (action: UIAlertAction!) -> Void in
+                self.view?.seguePrefectureList()
+            }
+        )
+
+        alert.addAction(action)
+        self.view?.presentAlert(alert: alert)
     }
     
     private func convertModelToVM(weatherModel: WeatherModel) {

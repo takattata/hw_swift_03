@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //FIXME: Routingに逃がせないかな?
         let vc: PrefectureListViewController = UIStoryboard(name: "PrefectureListViewController", bundle: nil).instantiateInitialViewController() as! PrefectureListViewController
         let repository: PrefectureListRepository = PrefectureListRepositoryImpl()
-        let useCase: PrefectureListUseCase = PrefectureListUseCaseImpl(prefectureListRepository: repository)
+        let useCase: PrefectureListUseCase = PrefectureListUseCaseImpl(repository: repository)
         let presenter: PrefectureListPresenter = PrefectureListPresenterImpl(useCase: useCase)
         var routing: PrefectureListRouting = PrefectureListRoutingImpl()
         routing.viewController = vc

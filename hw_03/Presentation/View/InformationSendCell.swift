@@ -22,10 +22,10 @@ class InformationSendCell: UITableViewCell {
     private var disposeBag: DisposeBag = DisposeBag()
     
     func update() {
-        setupUpdateButton()
+        setupSendButton()
     }
     
-    private func setupUpdateButton() {
+    private func setupSendButton() {
         sendButton.rx.tap
             .subscribe(
                 onNext: { [weak self] in
