@@ -20,6 +20,12 @@ class WeatherAlertCell: UITableViewCell {
     }
     private var disposeBag: DisposeBag = DisposeBag()
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.disposeBag = DisposeBag()
+    }
+    
     func update() {
         setupAlertButton()
     }

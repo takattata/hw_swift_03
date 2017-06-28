@@ -32,5 +32,6 @@ class WeatherCell: UITableViewCell {
         minLabel.attributedText = "最低気温: \(min)℃".withNormalStyle(ofSize: 16)
         let desc: String = viewModel.description()
         descText.attributedText = desc.withNormalStyle()
+        descText.isEditable = false
     }
 }
