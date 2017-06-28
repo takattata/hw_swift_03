@@ -113,6 +113,5 @@ extension WeatherViewController: WeatherPresenterView {
     
     func seguePrefectureList() {
         self.navigationController?.popViewController(animated: true)
-//        routing.seguePrefectureList()
     }
 }

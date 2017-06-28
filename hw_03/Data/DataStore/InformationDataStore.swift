@@ -29,7 +29,7 @@ struct InformationDataStoreImpl: InformationDataStore {
         
         return Observable.create { observer -> Disposable in
             Alamofire.request(
-                "***slack***",
+                "**slack**",
                 method: .post,
                 parameters: jsonMessage.dictionaryObject,
                 encoding: JSONEncoding.default,

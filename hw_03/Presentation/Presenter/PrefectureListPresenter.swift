@@ -49,7 +49,6 @@ class PrefectureListPresenterImpl: PrefectureListPresenter {
         useCase.getListData()
             .subscribe(
                 onNext: { [weak self] prefectureListModel in
-//                    self?.view?.changePrefectureListStatus
                     self?.prefectureListModel = prefectureListModel
                 }, onError: { [weak self] error in
                     self?.errorHandling(error: error)

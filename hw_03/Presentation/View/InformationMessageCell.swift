@@ -44,13 +44,7 @@ class InformationMessageCell: UITableViewCell {
 
 extension InformationMessageCell: UITextViewDelegate {
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        presenter.scrollUpView()
-        
-        return true
-    }
-    
-    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        presenter.scrollDownView()
+        presenter.didSelectTextView(textView)
         
         return true
     }

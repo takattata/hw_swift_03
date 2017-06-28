@@ -23,8 +23,6 @@ fileprivate extension Selector {
 class InformationRoutingImpl: InformationRouting {
     weak var viewController: UIViewController? {
         didSet {
-//            viewController?.navigationItem.backBarButtonItem =
-//                UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
             viewController?.navigationItem.rightBarButtonItem =
                 UIBarButtonItem(
                     barButtonSystemItem: .stop,

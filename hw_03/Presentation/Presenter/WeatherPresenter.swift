@@ -52,7 +52,6 @@ class WeatherPresenterImpl: WeatherPresenter {
         useCase.getWeatherData(prefectureId: self.prefectureId)
             .subscribe(
                 onNext: { [weak self] weatherModel in
-                    //                    self?.view?.changePrefectureListStatus
                     self?.weatherModel = weatherModel
                 }, onError: { [weak self] error in
                     self?.errorHandling(error: error)
@@ -85,9 +84,6 @@ class WeatherPresenterImpl: WeatherPresenter {
             if let error = error as? WeatherAppError {
                 self?.error = error
             }
-            
-            //FIXME:                self?.view?.changeStatus()
-            
         }
     }
 }

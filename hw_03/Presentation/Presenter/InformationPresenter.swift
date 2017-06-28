@@ -17,16 +17,14 @@ protocol InformationPresenter {
     
     func setupUI()
     func sendInformation()
-    func scrollUpView()
-    func scrollDownView()
+    func didSelectTextView(_ textView: UITextView)
 }
 
 protocol InformationPresenterView: class {
     func setupNavigation(title: String)
     func seguePrefectureList()
-    func scrollUpView()
-    func scrollDownView()
     func keyboardWillShow(notification: Notification)
+    func setActiveTextView(_ textView: UITextView) 
     func setupViewGesture()
 }
 
@@ -62,17 +60,9 @@ class InformationPresenterImpl: InformationPresenter {
                 }, onDisposed: nil)
             .addDisposableTo(disposeBag)
     }
-    
-    func scrollUpView() {
-        view?.scrollUpView()
-    }
-    
-    func scrollDownView() {
-        view?.scrollDownView()
-    }
-    
-    @objc func keyboardWillShow(notification: Notification) {
-        view?.keyboardWillShow(notification: notification)
+
+    func didSelectTextView(_ textView: UITextView) {
+        view?.setActiveTextView(textView)
     }
     
     private func errorHandling(error: Error) {

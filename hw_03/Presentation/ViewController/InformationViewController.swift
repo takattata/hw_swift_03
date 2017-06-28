@@ -10,11 +10,6 @@ import Foundation
 import UIKit
 import RxSwift
 
-//fileprivate extension Selector {
-//    static let keyboardWillShow =
-//        #selector(InformationPresenterImpl.keyboardWillShow(notification:))
-//}
-
 class InformationViewController: UIViewController {
     fileprivate enum Section: Int {
         case name
@@ -38,6 +33,7 @@ class InformationViewController: UIViewController {
         }
     }
 
+    fileprivate weak var activeTextView: UITextView?
     fileprivate var disposeBag: DisposeBag = DisposeBag()
     fileprivate var routing: InformationRouting!
     fileprivate var presenter: InformationPresenter! {
@@ -58,6 +54,20 @@ class InformationViewController: UIViewController {
         super.viewDidLoad()
         
         presenter.setupUI()
+
+        NotificationCenter.default.rx.notification(.UIKeyboardWillShow)
+            .subscribe(
+                onNext: { [weak self] notification in
+                    self?.keyboardWillShow(notification: notification)
+                }
+            ).addDisposableTo(disposeBag)
+        
+        NotificationCenter.default.rx.notification(.UIKeyboardWillHide)
+            .subscribe(
+                onNext: { [weak self] notification in
+                    self?.keyboardWillHide()
+                }
+            ).addDisposableTo(disposeBag)
     }
     
     func injection(presenter: InformationPresenter, routing: InformationRouting) {
@@ -124,33 +134,33 @@ extension InformationViewController: InformationPresenterView {
     func seguePrefectureList() {
         routing.seguePrefectureList()
     }
-    
-    func scrollUpView() {
-        NotificationCenter.default.rx.notification(NSNotification.Name.UIKeyboardWillShow, object: nil)
-            .subscribe(
-                onNext: { [weak self] notification in
-                    self?.keyboardWillShow(notification: notification)
-                }
-            ).addDisposableTo(disposeBag)
-    }
-    
-    func scrollDownView() {
-        self.tableView.contentInset = UIEdgeInsets.zero
-        self.tableView.scrollIndicatorInsets = UIEdgeInsets.zero
-    }
 
     func keyboardWillShow(notification: Notification) {
-        if let userInfo = notification.userInfo {
-            if let keyboardFrameInfo = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-                let keyboardHeight = keyboardFrameInfo.cgRectValue.height
-                let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
-                let indexPath: IndexPath = IndexPath(row: 0, section: Section.message.rawValue)
-                
-                self.tableView.contentInset = contentInsets
-                self.tableView.scrollIndicatorInsets = contentInsets
-                self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
-            }
+        guard
+            let userInfo        = notification.userInfo,
+            let keyboardFrame   = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue,
+            let _               = activeTextView
+        else {
+            return
         }
+        
+        let indexPath: IndexPath = IndexPath(row: 0, section: Section.message.rawValue)
+        let keyboardHeight: CGFloat = keyboardFrame.cgRectValue.height
+        let contentInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+        
+        tableView.contentInset = contentInsets
+        tableView.scrollIndicatorInsets = contentInsets
+        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+    }
+    
+    func keyboardWillHide() {
+        self.tableView.contentInset = UIEdgeInsets.zero
+        self.tableView.scrollIndicatorInsets = UIEdgeInsets.zero
+        self.activeTextView = nil
+    }
+    
+    func setActiveTextView(_ textView: UITextView) {
+        self.activeTextView = textView
     }
     
     func setupViewGesture() {

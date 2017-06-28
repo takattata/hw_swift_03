@@ -80,7 +80,6 @@ extension PrefectureListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //routing.segueQuestionViewController(questionId: questionId)
         presenter.selectedItem(index: indexPath.row)
     }
 }
